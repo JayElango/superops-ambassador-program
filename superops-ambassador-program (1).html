@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SuperOps Ambassador Program 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f7f7fc;
+    --bg-card: #ffffff;
+    --border: #e8e8f0;
+    --border-strong: #d0d0e0;
+    --purple: #6B4FFF;
+    --purple-dark: #5438e8;
+    --purple-light: #f0ecff;
+    --purple-mid: #ede8ff;
+    --purple-glow: rgba(107,79,255,0.12);
+    --orange: #FF6B35;
+    --orange-light: #fff4f0;
+    --teal: #00c9a7;
+    --teal-light: #e6faf7;
+    --text: #0f0f1a;
+    --text-secondary: #4a4a6a;
+    --text-muted: #8888aa;
+    --text-dim: #c0c0d8;
+    --font: 'Inter', -apple-system, sans-serif;
+    --radius: 12px;
+    --radius-lg: 20px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .nav-logo-mark { width: 32px; height: 32px; background: var(--purple); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 13px; }
+  .nav-logo-text { font-weight: 700; font-size: 17px; color: var(--text); letter-spacing: -0.3px; }
+  .nav-logo-text span { color: var(--purple); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--purple); }
+  .nav-cta { background: var(--purple); color: #fff; padding: 9px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+  .nav-cta:hover { background: var(--purple-dark); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero { padding: 120px 48px 80px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; min-height: 92vh; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--purple-light); color: var(--purple); border: 1px solid rgba(107,79,255,0.2); padding: 5px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 28px; }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); animation: blink 2s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
+  .hero h1 { font-size: clamp(36px, 4.5vw, 58px); font-weight: 800; line-height: 1.08; letter-spacing: -1.5px; margin-bottom: 22px; }
+  .hero h1 .accent { color: var(--purple); }
+  .hero-sub { font-size: 17px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 36px; max-width: 480px; }
+  .hero-sub strong { color: var(--text); font-weight: 600; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary { background: var(--purple); color: #fff; padding: 13px 24px; border-radius: 9px; font-weight: 600; font-size: 15px; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+  .btn-primary:hover { background: var(--purple-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(107,79,255,0.28); }
+  .btn-secondary { background: transparent; color: var(--text-secondary); padding: 13px 20px; border-radius: 9px; font-weight: 500; font-size: 15px; text-decoration: none; border: 1px solid var(--border-strong); transition: all 0.2s; }
+  .btn-secondary:hover { border-color: var(--purple); color: var(--purple); }
+  .hero-stats { margin-top: 52px; padding-top: 36px; border-top: 1px solid var(--border); display: flex; gap: 32px; }
+  .stat-num { font-size: 28px; font-weight: 800; letter-spacing: -1px; line-height: 1; }
+  .stat-num .s { color: var(--purple); }
+  .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+  .stat-div { width: 1px; background: var(--border); }
+
+  /* HERO RIGHT */
+  .hero-right { position: relative; }
+  .hero-card-bg { background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; position: relative; overflow: hidden; }
+  .hero-card-bg::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(107,79,255,0.1), transparent 70%); pointer-events: none; }
+  .hero-card-title { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 20px; }
+  .track-cards { display: flex; flex-direction: column; gap: 10px; }
+  .track-pill { display: flex; align-items: center; gap: 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; transition: border-color 0.2s, box-shadow 0.2s; }
+  .track-pill:hover { border-color: var(--purple); box-shadow: 0 2px 12px var(--purple-glow); }
+  .track-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .ti-p { background: var(--purple-light); } .ti-o { background: var(--orange-light); } .ti-t { background: var(--teal-light); }
+  .track-label { font-size: 13px; font-weight: 600; color: var(--text); }
+  .track-sub { font-size: 12px; color: var(--text-muted); }
+  .track-badge { margin-left: auto; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 100px; background: var(--purple-light); color: var(--purple); }
+  .hero-floater { position: absolute; bottom: -18px; left: 28px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px; }
+  .floater-text strong { display: block; font-size: 13px; font-weight: 600; }
+  .floater-text span { font-size: 12px; color: var(--text-muted); }
+
+  /* LAYOUT */
+  .section-full { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 0; }
+  .section-pad { padding: 80px 0; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+  .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
+  .section-title { font-size: clamp(26px, 3vw, 40px); font-weight: 800; letter-spacing: -1px; line-height: 1.12; margin-bottom: 16px; }
+  .section-body { font-size: 17px; color: var(--text-secondary); line-height: 1.7; max-width: 580px; }
+  .section-body strong { color: var(--text); font-weight: 600; }
+
+  /* OPPORTUNITY */
+  .opp-grid { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .opp-quote { font-size: clamp(18px, 2vw, 24px); font-weight: 700; line-height: 1.4; padding-left: 24px; border-left: 3px solid var(--purple); letter-spacing: -0.3px; }
+  .opp-quote em { color: var(--purple); font-style: normal; }
+  .opp-source { margin-top: 16px; font-size: 13px; color: var(--text-muted); padding-left: 24px; }
+  .opp-points { display: flex; flex-direction: column; gap: 24px; }
+  .opp-item { display: flex; gap: 16px; align-items: flex-start; }
+  .opp-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .oi-p{background:var(--purple-light)} .oi-o{background:var(--orange-light)} .oi-t{background:var(--teal-light)}
+  .opp-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+  .opp-body { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* PHASES */
+  .phases { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .phase { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
+  .phase:hover { border-color: var(--purple); box-shadow: 0 8px 32px var(--purple-glow); transform: translateY(-3px); }
+  .phase.launch:hover { border-color: var(--orange); box-shadow: 0 8px 32px rgba(255,107,53,0.14); }
+  .phase-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .phase-num { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); background: var(--purple-light); padding: 4px 10px; border-radius: 100px; }
+  .phase.launch .phase-num { color: var(--orange); background: var(--orange-light); }
+  .phase-timeline { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+  .phase-title { font-size: 20px; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 12px; }
+  .phase-body { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+  .phase-body strong { color: var(--text); font-weight: 600; }
+  .phase-hl { margin-top: 20px; padding: 12px 14px; background: var(--purple-light); border-radius: 8px; font-size: 13px; color: var(--purple); font-weight: 500; line-height: 1.5; }
+  .phase.launch .phase-hl { background: var(--orange-light); color: var(--orange); }
+
+  /* ROLES */
+  .roles-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .role-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
+  .role-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.07); }
+  .rc-bar { height: 4px; border-radius: 100px; margin-bottom: 24px; }
+  .rc-p { background: var(--purple); } .rc-o { background: var(--orange); } .rc-t { background: var(--teal); }
+  .role-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px; }
+  .role-track { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .rt-p{color:var(--purple)} .rt-o{color:var(--orange)} .rt-t{color:var(--teal)}
+  .role-title { font-size: 22px; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 12px; }
+  .role-body { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+  .role-tags { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .role-tag { font-size: 12px; padding: 4px 10px; border-radius: 100px; border: 1px solid var(--border); color: var(--text-muted); font-weight: 500; background: var(--bg-soft); }
+
+  /* SUPER MODEL */
+  .super-steps { margin-top: 56px; display: flex; flex-direction: column; gap: 12px; }
+  .super-step { display: grid; grid-template-columns: 72px 1fr 1fr; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-card); transition: border-color 0.2s; }
+  .super-step:hover { border-color: var(--purple); }
+  .super-letter { background: var(--purple-light); display: flex; align-items: center; justify-content: center; font-size: 36px; font-weight: 800; color: var(--purple); border-right: 1px solid var(--border); }
+  .super-content { padding: 24px 28px; border-right: 1px solid var(--border); }
+  .super-content-title { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+  .super-content-body { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+  .super-ai { padding: 24px 28px; background: var(--purple-mid); }
+  .super-ai-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--purple); margin-bottom: 6px; }
+  .super-ai-body { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* BENEFITS */
+  .benefits-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .benefit-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; transition: border-color 0.2s, box-shadow 0.2s; }
+  .benefit-card:hover { border-color: var(--purple); box-shadow: 0 4px 20px var(--purple-glow); }
+  .benefit-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--purple-light); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px; }
+  .benefit-title { font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+  .benefit-body { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* PLATFORMS */
+  .platforms-table { margin-top: 48px; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  .pt-header { display: grid; grid-template-columns: 1fr 120px 120px 120px; background: var(--bg-soft); padding: 14px 24px; border-bottom: 1px solid var(--border); }
+  .pt-hcell { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+  .pt-hcell:not(:first-child) { text-align: center; }
+  .pt-row { display: grid; grid-template-columns: 1fr 120px 120px 120px; padding: 16px 24px; border-bottom: 1px solid var(--border); align-items: center; transition: background 0.15s; }
+  .pt-row:last-child { border-bottom: none; }
+  .pt-row:hover { background: var(--bg-soft); }
+  .pt-name { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; }
+  .badge { font-size: 11px; padding: 3px 10px; border-radius: 100px; font-weight: 600; text-align: center; display: block; width: fit-content; margin: 0 auto; }
+  .bp { background: var(--purple-light); color: var(--purple); }
+  .bo { background: #e8f7f4; color: var(--teal); }
+  .bn { background: var(--bg-soft); color: var(--text-dim); border: 1px solid var(--border); }
+
+  /* ELIGIBILITY */
+  .eligibility-grid { margin-top: 48px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .elig-item { display: flex; gap: 14px; align-items: flex-start; padding: 22px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); transition: border-color 0.2s; }
+  .elig-item:hover { border-color: var(--purple); }
+  .elig-check { width: 22px; height: 22px; border-radius: 50%; background: var(--purple-light); border: 1.5px solid rgba(107,79,255,0.3); display: flex; align-items: center; justify-content: center; color: var(--purple); font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .elig-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .elig-body { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+
+  /* PROCESS */
+  .process-steps { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .process-step { padding: 26px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--bg-card); transition: border-color 0.2s; }
+  .process-step:hover { border-color: var(--purple); }
+  .process-num { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+  .process-title { font-weight: 700; font-size: 17px; margin-bottom: 8px; letter-spacing: -0.2px; }
+  .process-body { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* APPLY */
+  .apply-section { background: var(--bg-soft); border-top: 1px solid var(--border); padding: 80px 0; }
+  .apply-inner { max-width: 760px; margin: 0 auto; padding: 0 48px; }
+  .form-wrap { margin-top: 40px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  label { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-secondary); }
+  input, select, textarea { background: var(--bg-soft); border: 1.5px solid var(--border); color: var(--text); padding: 11px 14px; border-radius: 8px; font-family: var(--font); font-size: 14px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%; -webkit-appearance: none; }
+  input:focus, select:focus, textarea:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(107,79,255,0.1); background: #fff; }
+  input::placeholder, textarea::placeholder { color: var(--text-dim); }
+  textarea { resize: vertical; min-height: 88px; }
+  .checkbox-group { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .checkbox-item { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+  .checkbox-item input[type=checkbox] { width: 16px; height: 16px; padding: 0; cursor: pointer; accent-color: var(--purple); flex-shrink: 0; }
+  .checkbox-item span { font-size: 14px; color: var(--text-secondary); }
+  .form-submit { margin-top: 28px; width: 100%; background: var(--purple); color: #fff; border: none; padding: 15px; border-radius: 9px; font-family: var(--font); font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+  .form-submit:hover { background: var(--purple-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(107,79,255,0.28); }
+  .form-note { margin-top: 14px; font-size: 12px; color: var(--text-muted); text-align: center; line-height: 1.5; }
+  .success-msg { display: none; text-align: center; padding: 48px 0; }
+  .success-icon { font-size: 52px; margin-bottom: 16px; }
+  .success-title { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; }
+  .success-body { font-size: 16px; color: var(--text-secondary); line-height: 1.65; }
+  .success-body a { color: var(--purple); text-decoration: none; font-weight: 500; }
+
+  /* CTA BANNER */
+  .cta-banner { background: var(--purple); padding: 72px 48px; text-align: center; }
+  .cta-banner h2 { font-size: clamp(28px, 3vw, 42px); font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 14px; }
+  .cta-banner p { font-size: 17px; color: rgba(255,255,255,0.75); max-width: 500px; margin: 0 auto 32px; line-height: 1.6; }
+  .btn-white { background: #fff; color: var(--purple); padding: 13px 28px; border-radius: 9px; font-weight: 700; font-size: 15px; text-decoration: none; display: inline-block; transition: all 0.2s; }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+  /* FOOTER */
+  footer { background: var(--text); padding: 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .footer-mark { width: 28px; height: 28px; border-radius: 6px; background: var(--purple); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 12px; }
+  .footer-name { font-weight: 700; font-size: 16px; color: #fff; }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+  .footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
+
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 0; min-height: auto; }
+    .hero-right { display: none; }
+    .container { padding: 0 24px; }
+    .opp-grid, .phases, .roles-grid, .eligibility-grid { grid-template-columns: 1fr; }
+    .benefits-grid, .process-steps { grid-template-columns: 1fr 1fr; }
+    .super-step { grid-template-columns: 60px 1fr; }
+    .super-ai { display: none; }
+    .pt-header, .pt-row { grid-template-columns: 1fr 100px 100px; }
+    .pt-header .pt-hcell:last-child, .pt-row > div:last-child { display: none; }
+    .form-grid { grid-template-columns: 1fr; }
+    .apply-inner { padding: 0 24px; }
+    .form-wrap { padding: 28px 20px; }
+    footer { flex-direction: column; text-align: center; padding: 40px 24px; }
+    .footer-links { justify-content: center; }
+    .cta-banner { padding: 56px 24px; }
+  }
+  @media (max-width: 600px) {
+    .benefits-grid, .process-steps { grid-template-columns: 1fr; }
+    .hero-stats { flex-wrap: wrap; gap: 20px; }
+    .stat-div { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">SO</div>
+    <span class="nav-logo-text">Super<span>Ops</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#strategy">Strategy</a></li>
+    <li><a href="#roles">Tracks</a></li>
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#apply">Apply</a></li>
+  </ul>
+  <a href="#apply" class="nav-cta">Apply Now →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge"><div class="badge-dot"></div> Ambassador Program 2026 — Now Open</div>
+    <h1>Don't just use<br>the future.<br><span class="accent">Help define it.</span></h1>
+    <p class="hero-sub">Join a small, vetted group of MSP operators who are <strong>rethinking how managed services work in an AI-first world</strong> — and building the community that shapes the category.</p>
+    <div class="hero-actions">
+      <a href="#apply" class="btn-primary">Apply to the Program →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">500<span class="s">+</span></div><div class="stat-label">MSPs globally</div></div>
+      <div class="stat-div"></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Ambassador tracks</div></div>
+      <div class="stat-div"></div>
+      <div class="stat"><div class="stat-num">4<span class="s">–6</span> hrs</div><div class="stat-label">Per month</div></div>
+      <div class="stat-div"></div>
+      <div class="stat"><div class="stat-num"><span class="s">AI</span></div><div class="stat-label">Marketplace launching soon</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card-bg">
+      <div class="hero-card-title">Choose your ambassador track</div>
+      <div class="track-cards">
+        <div class="track-pill">
+          <div class="track-icon ti-p">🗺️</div>
+          <div><div class="track-label">Community Track</div><div class="track-sub">The Regional Lead</div></div>
+          <div class="track-badge">Founding</div>
+        </div>
+        <div class="track-pill">
+          <div class="track-icon ti-o">⚙️</div>
+          <div><div class="track-label">Technical Track</div><div class="track-sub">The Technical Architect</div></div>
+          <div class="track-badge">Founding</div>
+        </div>
+        <div class="track-pill">
+          <div class="track-icon ti-t">✍️</div>
+          <div><div class="track-label">Content Track</div><div class="track-sub">The Content Chronicler</div></div>
+          <div class="track-badge">Founding</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-floater">
+      <span style="font-size:20px">🚀</span>
+      <div class="floater-text"><strong>AI Marketplace launching soon</strong><span>Ambassadors get early access</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITY -->
+<div class="section-full">
+  <div class="container">
+    <div class="section-tag">Why Now</div>
+    <h2 class="section-title">A rare moment in tech — and MSPs</h2>
+    <div class="opp-grid fade-up">
+      <div>
+        <div class="opp-quote">"The companies that redefine industries didn't win by asking <em>'how do we do this better?'</em> They won by asking <em>'what would this look like if it were invented today?'</em>"</div>
+        <div class="opp-source">— SuperOps Founder's Note, 2026</div>
+      </div>
+      <div class="opp-points">
+        <div class="opp-item"><div class="opp-icon oi-p">⚡</div><div><div class="opp-title">AI is rewriting the rules</div><div class="opp-body">Manual workflows are being automated. Systems that required constant oversight can now become autonomous. The underlying rules of the MSP industry are shifting — right now.</div></div></div>
+        <div class="opp-item"><div class="opp-icon oi-o">🏗️</div><div><div class="opp-title">Legacy players can't catch up</div><div class="opp-body">ConnectWise, Autotask, Kaseya are adding AI to 15-year-old architecture. SuperOps is building software designed around AI from day one. That's structural — not a claim.</div></div></div>
+        <div class="opp-item"><div class="opp-icon oi-t">🧠</div><div><div class="opp-title">The conversation needs real voices</div><div class="opp-body">The future of MSPs won't be defined by vendor announcements. It'll be defined by practitioners who are experimenting, building, and sharing what works — in public.</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMMUNITY STRATEGY -->
+<div class="section-pad" id="strategy">
+  <div class="container">
+    <div class="section-tag">Community Strategy</div>
+    <h2 class="section-title">A two-month seeding strategy<br>before the AI Marketplace launches</h2>
+    <p class="section-body">This isn't a typical vendor community. Ambassadors lead the industry conversation that the AI Marketplace will answer — not the other way around.</p>
+    <div class="phases fade-up">
+      <div class="phase">
+        <div class="phase-top"><div class="phase-num">Phase 01</div><div class="phase-timeline">Month 1</div></div>
+        <div class="phase-title">The Provocation Phase</div>
+        <div class="phase-body">Ambassadors seed one question across MSP communities: <strong>"Is the way MSPs work today actually right — or just the way it's always been done?"</strong><br><br>Not as a SuperOps pitch. As a genuine industry debate. Hot takes, workflow teardowns, honest AI experiments.</div>
+        <div class="phase-hl">Goal: spark the conversation, not answer it yet.</div>
+      </div>
+      <div class="phase">
+        <div class="phase-top"><div class="phase-num">Phase 02</div><div class="phase-timeline">Month 2</div></div>
+        <div class="phase-title">The Vision Phase</div>
+        <div class="phase-body">The conversation shifts from <em>"is change coming"</em> to <em>"what does the future look like."</em> Ambassadors describe workflows they wish existed. Problems current tools can't solve.<br><br><strong>SuperOps listens and shapes.</strong> This becomes the intellectual foundation for launch.</div>
+        <div class="phase-hl">Goal: define the future before the product arrives.</div>
+      </div>
+      <div class="phase launch">
+        <div class="phase-top"><div class="phase-num">Phase 03</div><div class="phase-timeline">Launch Day</div></div>
+        <div class="phase-title">The Marketplace Arrives</div>
+        <div class="phase-body">By launch day, the community hasn't been sold to — they've been <strong>part of building the thinking.</strong><br><br>Ambassadors aren't announcing a product. They're introducing the answer to questions they've been asking in public for two months.</div>
+        <div class="phase-hl">Goal: launch into a community that's already primed.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROLES -->
+<div class="section-full" id="roles">
+  <div class="container">
+    <div class="section-tag">Ambassador Tracks</div>
+    <h2 class="section-title">Three paths to impact</h2>
+    <p class="section-body">Choose the track that matches how you naturally contribute. Tracks can be combined or switched over time.</p>
+    <div class="roles-grid fade-up">
+      <div class="role-card"><div class="rc-bar rc-p"></div><div class="role-icon ti-p">🗺️</div><div class="role-track rt-p">Community Track</div><div class="role-title">The Regional Lead</div><div class="role-body">Shape your local MSP ecosystem. Host meetups, manage regional Slack/Discord channels, and become the go-to voice for what AI-native MSP operations look like in your geography.</div><div class="role-tags"><span class="role-tag">Meetups</span><span class="role-tag">Slack/Discord</span><span class="role-tag">Regional voice</span><span class="role-tag">AMA Series</span></div></div>
+      <div class="role-card"><div class="rc-bar rc-o"></div><div class="role-icon ti-o">⚙️</div><div class="role-track rt-o">Technical Track</div><div class="role-title">The Technical Architect</div><div class="role-body">Design and showcase AI-powered workflows, automations, and integrations. Publish blueprints the MSP community can adopt. Be the first to build on the AI Marketplace.</div><div class="role-tags"><span class="role-tag">Workflow blueprints</span><span class="role-tag">AI integrations</span><span class="role-tag">Beta access</span><span class="role-tag">Hackathons</span></div></div>
+      <div class="role-card"><div class="rc-bar rc-t"></div><div class="role-icon ti-t">✍️</div><div class="role-track rt-t">Content Track</div><div class="role-title">The Content Chronicler</div><div class="role-body">Turn your real-world MSP experience into content that moves the industry forward — blogs, social posts, tutorials, and honest takes that build your expert brand alongside SuperOps.</div><div class="role-tags"><span class="role-tag">Blogs & tutorials</span><span class="role-tag">LinkedIn</span><span class="role-tag">Thought leadership</span><span class="role-tag">SuperPod</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SUPER MODEL -->
+<div class="section-pad">
+  <div class="container">
+    <div class="section-tag">The SUPER Model</div>
+    <h2 class="section-title">How we run the program</h2>
+    <p class="section-body">A framework focused on your success as an ambassador, and the community's impact on the industry.</p>
+    <div class="super-steps fade-up">
+      <div class="super-step"><div class="super-letter">S</div><div class="super-content"><div class="super-content-title">Source the Right Ambassadors</div><div class="super-content-body">High-fit practitioners identified using product usage, NPS scores, CSM nominations, and community activity. Focus on MSP owners, engineers, and architects actively experimenting with AI.</div></div><div class="super-ai"><div class="super-ai-label">AI angle</div><div class="super-ai-body">Prioritize candidates already running AI experiments — not just curious. Their real stories are the raw material for the community strategy.</div></div></div>
+      <div class="super-step"><div class="super-letter">U</div><div class="super-content"><div class="super-content-title">Understand Their Goals</div><div class="super-content-body">A short survey and 1:1 onboarding call to uncover each ambassador's goals, constraints, and preferred ways to contribute — before asking anything of them.</div></div><div class="super-ai"><div class="super-ai-label">AI angle</div><div class="super-ai-body">Map each ambassador's AI maturity. Early adopters lead Month 1 provocations. Skeptics-turned-believers are your most powerful Month 2 voices.</div></div></div>
+      <div class="super-step"><div class="super-letter">P</div><div class="super-content"><div class="super-content-title">Pilot with a Small Cohort</div><div class="super-content-body">Start with 8–10 founding voices. Test tracks, calibrate expectations, validate the program before scaling to broader audiences.</div></div><div class="super-ai"><div class="super-ai-label">AI angle</div><div class="super-ai-body">The founding cohort seeds the AI conversation for the two-month runway to marketplace launch. Small is intentional — credibility over volume.</div></div></div>
+      <div class="super-step"><div class="super-letter">E</div><div class="super-content"><div class="super-content-title">Engage with Meaningful Tracks</div><div class="super-content-body">Clear opt-in tracks with a light, predictable quarterly cadence. Designed to respect that you're running an MSP — this isn't a second job.</div></div><div class="super-ai"><div class="super-ai-label">AI angle</div><div class="super-ai-body">Each track has an AI-specific activity: Technical Architects build on the marketplace. Content Chroniclers publish AI workflow stories. Regional Leads host AI-themed events.</div></div></div>
+      <div class="super-step"><div class="super-letter">R</div><div class="super-content"><div class="super-content-title">Recognize and Refine</div><div class="super-content-body">Contributions celebrated through spotlights, credentials, perks, and early product access. Ambassador feedback continuously shapes the SuperOps roadmap.</div></div><div class="super-ai"><div class="super-ai-label">AI angle</div><div class="super-ai-body">Ambassadors who shape the AI Marketplace roadmap get named credit and early access. Their influence is visible and real — not symbolic.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<div class="section-full" id="benefits">
+  <div class="container">
+    <div class="section-tag">What You Get</div>
+    <h2 class="section-title">Benefits designed for real professional ROI</h2>
+    <p class="section-body">Not just swag. Actual career leverage, industry access, and early positioning in a category being built right now.</p>
+    <div class="benefits-grid fade-up">
+      <div class="benefit-card"><div class="benefit-icon">⚡</div><div class="benefit-title">AI Marketplace Early Access</div><div class="benefit-body">Be among the first MSPs to build on the SuperOps AI Marketplace — before it's available to the general user base. Shape it before it ships.</div></div>
+      <div class="benefit-card"><div class="benefit-icon">🌍</div><div class="benefit-title">Global Stage Opportunities</div><div class="benefit-body">Priority access to speak at SuperSummit, SuperPod, and partner conferences while the AI conversation in MSPs is still wide open.</div></div>
+      <div class="benefit-card"><div class="benefit-icon">🗺️</div><div class="benefit-title">Direct Roadmap Influence</div><div class="benefit-body">Your field insights go directly to the product team. Ambassador feedback visibly shapes what gets prioritized and built next.</div></div>
+      <div class="benefit-card"><div class="benefit-icon">🤝</div><div class="benefit-title">Peer Network of Builders</div><div class="benefit-body">Access a curated network of SuperOps engineers, product leaders, and fellow MSP innovators actively rethinking how the category works.</div></div>
+      <div class="benefit-card"><div class="benefit-icon">🏆</div><div class="benefit-title">Professional Recognition</div><div class="benefit-body">Certificates, LinkedIn badges, MSP Bugle features, and Annual MSP Award nominations — credentials that show you were here before it was obvious.</div></div>
+      <div class="benefit-card"><div class="benefit-icon">📦</div><div class="benefit-title">Product Perks & Sponsored Access</div><div class="benefit-body">Usage credits, sponsored accounts, beta feature access, and priority invitations to hackathons, AMAs, and product design sessions.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PLATFORMS -->
+<div class="section-pad">
+  <div class="container">
+    <div class="section-tag">Ambassador Spotlight</div>
+    <h2 class="section-title">Your stage. Your story.</h2>
+    <p class="section-body">Priority access to platforms that put your expertise in front of thousands of MSP professionals worldwide.</p>
+    <div class="platforms-table fade-up">
+      <div class="pt-header"><div class="pt-hcell">Platform</div><div class="pt-hcell">Community</div><div class="pt-hcell">Technical</div><div class="pt-hcell">Content</div></div>
+      <div class="pt-row"><div class="pt-name">📰 MSP Bugle — Magazine feature</div><div><span class="badge bp">Priority</span></div><div><span class="badge bp">Priority</span></div><div><span class="badge bp">Priority</span></div></div>
+      <div class="pt-row"><div class="pt-name">🏟️ SuperSummit — Flagship speaker</div><div><span class="badge bp">Priority</span></div><div><span class="badge bp">Priority</span></div><div><span class="badge bo">Open</span></div></div>
+      <div class="pt-row"><div class="pt-name">🎙️ SuperPod — Podcast guest</div><div><span class="badge bp">Priority</span></div><div><span class="badge bo">Open</span></div><div><span class="badge bp">Priority</span></div></div>
+      <div class="pt-row"><div class="pt-name">🖥️ Product Webinar — Guest panelist</div><div><span class="badge bo">Open</span></div><div><span class="badge bp">Priority</span></div><div><span class="badge bo">Open</span></div></div>
+      <div class="pt-row"><div class="pt-name">🏆 Annual MSP Awards — Nomination</div><div><span class="badge bp">Priority</span></div><div><span class="badge bp">Priority</span></div><div><span class="badge bp">Priority</span></div></div>
+      <div class="pt-row"><div class="pt-name">🔧 Global Hackathon — Mentor</div><div><span class="badge bn">—</span></div><div><span class="badge bo">Open</span></div><div><span class="badge bn">—</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ELIGIBILITY -->
+<div class="section-full">
+  <div class="container">
+    <div class="section-tag">Who Should Apply</div>
+    <h2 class="section-title">We keep the cohort small and curated</h2>
+    <p class="section-body">Every ambassador has real impact. Here's who should apply and the signals we look for.</p>
+    <div class="eligibility-grid fade-up">
+      <div class="elig-item"><div class="elig-check">✓</div><div><div class="elig-title">MSP operator with hands-on experience</div><div class="elig-body">Currently working in IT or MSP as an owner, engineer, technician, or consultant — with real experience running or supporting managed services.</div></div></div>
+      <div class="elig-item"><div class="elig-check">✓</div><div><div class="elig-title">Actively experimenting with AI</div><div class="elig-body">Not just curious about AI — testing it, building with it, or evaluating it seriously in your own MSP operations. This is the most important signal we look for.</div></div></div>
+      <div class="elig-item"><div class="elig-check">✓</div><div><div class="elig-title">Active voice in the MSP community</div><div class="elig-body">A consistent history contributing to MSP communities — LinkedIn, forums, user groups, events. You contribute, not just consume.</div></div></div>
+      <div class="elig-item"><div class="elig-check">✓</div><div><div class="elig-title">Independent thinker</div><div class="elig-body">You've publicly disagreed with industry consensus at least once. We want thinkers, not validators. The founding cohort needs voices people actually listen to.</div></div></div>
+      <div class="elig-item"><div class="elig-check">✓</div><div><div class="elig-title">Community-first mindset</div><div class="elig-body">Genuine passion for peer-led learning and helping other MSPs grow. You know the difference between building a community and running a marketing channel.</div></div></div>
+      <div class="elig-item"><div class="elig-check">✓</div><div><div class="elig-title">Able to commit 4–6 hours per month</div><div class="elig-body">Across events, content, and feedback sessions. Designed to respect that you're running an MSP — a small investment in leading your industry.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section-pad" id="how">
+  <div class="container">
+    <div class="section-tag">Process</div>
+    <h2 class="section-title">Six steps from application to impact</h2>
+    <p class="section-body">A clear journey that respects your time and maximizes the value you get from the program.</p>
+    <div class="process-steps fade-up">
+      <div class="process-step"><div class="process-num">Step 01</div><div class="process-title">Apply</div><div class="process-body">Short application — your role, experience, and preferred track. No long essays. Just a clear picture of who you are and how you contribute.</div></div>
+      <div class="process-step"><div class="process-num">Step 02</div><div class="process-title">Review & Select</div><div class="process-body">Rolling review using eligibility criteria and product-usage signals. Small, high-fit founding cohort selected typically within 5 business days.</div></div>
+      <div class="process-step"><div class="process-num">Step 03</div><div class="process-title">Onboard</div><div class="process-body">Short survey, then a 1:1 call to align on goals and activities. Welcome pack and full program overview included.</div></div>
+      <div class="process-step"><div class="process-num">Step 04</div><div class="process-title">Engage</div><div class="process-body">Pick your track. Each quarter, participate in events, feedback sessions, and advocacy activities at your own pace.</div></div>
+      <div class="process-step"><div class="process-num">Step 05</div><div class="process-title">Recognize & Reward</div><div class="process-body">Contributions celebrated through spotlights, credentials, perks, and early product access. Your feedback shapes the SuperOps roadmap.</div></div>
+      <div class="process-step"><div class="process-num">Step 06</div><div class="process-title">Evolve Together</div><div class="process-body">Quarterly program reviews. Tracks and benefits refined based on what delivers the most value — to ambassadors and to the community.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- APPLY -->
+<div class="apply-section" id="apply">
+  <div class="apply-inner">
+    <div class="section-tag">Apply Now</div>
+    <h2 class="section-title">Ready to help define<br>the future of MSP?</h2>
+    <p class="section-body" style="max-width:100%">Applications take less than 5 minutes. Rolling review — we'll be in touch within 5 business days.</p>
+    <div class="form-wrap" id="application-form">
+      <div class="form-grid">
+        <div class="form-group"><label>First Name *</label><input type="text" placeholder="Your first name"></div>
+        <div class="form-group"><label>Last Name *</label><input type="text" placeholder="Your last name"></div>
+        <div class="form-group"><label>Work Email *</label><input type="email" placeholder="you@yourcompany.com"></div>
+        <div class="form-group"><label>LinkedIn Profile URL *</label><input type="url" placeholder="linkedin.com/in/yourprofile"></div>
+        <div class="form-group"><label>Company Name *</label><input type="text" placeholder="Your MSP / company"></div>
+        <div class="form-group"><label>Your Role *</label><select><option value="" disabled selected>Select your role</option><option>MSP Owner / Founder</option><option>IT Engineer / Technician</option><option>IT Manager / Director</option><option>Solutions Architect</option><option>IT Consultant</option><option>Other</option></select></div>
+        <div class="form-group"><label>Company Size</label><select><option value="" disabled selected>Select size</option><option>1–5 employees</option><option>6–20 employees</option><option>21–50 employees</option><option>51–200 employees</option><option>200+ employees</option></select></div>
+        <div class="form-group"><label>Country / Region *</label><input type="text" placeholder="e.g. United States, United Kingdom"></div>
+        <div class="form-group full"><label>Ambassador Track *</label><select><option value="" disabled selected>Choose a track</option><option>Community — The Regional Lead</option><option>Technical — The Technical Architect</option><option>Content — The Content Chronicler</option><option>I'm open to more than one</option></select></div>
+        <div class="form-group full"><label>How are you currently using AI in your MSP? * (Most important)</label><textarea placeholder="Any AI tools, automations, or experiments you're running or evaluating. Doesn't need to be polished — just real."></textarea></div>
+        <div class="form-group full"><label>How do you contribute to the MSP community?</label><textarea placeholder="Forums, LinkedIn, local groups, speaking at events — whatever applies"></textarea></div>
+        <div class="form-group full"><label>Are you a current SuperOps customer?</label><select><option value="" disabled selected>Select one</option><option>Yes — active customer</option><option>Yes — in trial</option><option>No — but I'm evaluating</option><option>No — I'm a prospective user</option><option>No — I'm an AI thought leader / industry voice</option></select></div>
+        <div class="form-group full">
+          <label>Activities that interest you (select all that apply)</label>
+          <div class="checkbox-group">
+            <label class="checkbox-item"><input type="checkbox"><span>Hosting or co-hosting local MSP meetups</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>Speaking on product webinars or panels</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>Writing blogs, tutorials, or case studies</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>Providing AI Marketplace product feedback and roadmap input</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>Appearing on SuperPod or other media</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>Mentoring at hackathons and builder events</span></label>
+          </div>
+        </div>
+        <div class="form-group full"><label>What do you most want to get out of the program?</label><textarea placeholder="Career goals, community impact, product influence — what matters to you"></textarea></div>
+      </div>
+      <button class="form-submit" onclick="submitForm()">Submit Application →</button>
+      <p class="form-note">By submitting you agree to our Privacy Policy. We'll never share your data with third parties.</p>
+    </div>
+    <div class="success-msg" id="success-msg">
+      <div class="success-icon">🎉</div>
+      <div class="success-title">Application Received!</div>
+      <div class="success-body">Thanks for applying to the SuperOps Ambassador Program.<br>We'll be in touch within <strong>5 business days</strong>.<br><br>In the meantime, explore the <a href="https://community.superops.com/">SuperOps Community</a> or listen to <a href="https://superops.com/superpod">SuperPod</a>.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Powered by AI.<br>Superpowered for MSPs.</h2>
+  <p>Join the operators who are building the future of managed services — not just using the tools of the past.</p>
+  <a href="#apply" class="btn-white">Apply to the 2026 Cohort →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-brand"><div class="footer-mark">SO</div><span class="footer-name">SuperOps</span></a>
+  <div class="footer-links">
+    <a href="#">Program FAQ</a>
+    <a href="https://community.superops.com/">Community</a>
+    <a href="https://superops.com/superpod">SuperPod</a>
+    <a href="https://superops.com/magazine">MSP Bugle</a>
+    <a href="https://superops.com/contact-us">Contact</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+  <div class="footer-copy">© 2026 SuperOps. All rights reserved.</div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold: 0.08});
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  function submitForm() {
+    document.getElementById('application-form').style.display = 'none';
+    const msg = document.getElementById('success-msg');
+    msg.style.display = 'block';
+    window.scrollTo({top: msg.offsetTop - 100, behavior: 'smooth'});
+  }
+</script>
+</body>
+</html>
